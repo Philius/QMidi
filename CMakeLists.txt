@@ -36,7 +36,7 @@ if(MSVC)
 endif()
 
 option(QMIDI_BUILD_TESTS "Build the unit tests"  OFF)
-option(QMIDI_BUILD_EXAMPLES "Build the examples"  OFF)
+option(QMIDI_BUILD_EXAMPLES "Build the examples"  ON)
 
 #install var
 set(include_dest "include/QMidi-${QMidi_VERSION}")

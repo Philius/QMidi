@@ -2,33 +2,7 @@
 #include <QDebug>
 #include <QMidi>
 
-#include <QMainWindow>
-
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
-public:
-    MainWindow(QMidi & midiIn, QWidget * parent = nullptr)
-    : QMainWindow(parent)
-    , midi(midiIn)
-    {
-        if(midi.outputInterface().directions().testFlag(Output)) {
-            qDebug() << "Sending note on...";
-            // You can also send MIDI messages using similarly named slots.
-            // Both raw message and individual message type slots are available:
-            midi.sendNoteOn(0, QMidiNote::ASharp_5, 127);
-        }
-
-    }
-    QMidi & midi;
-public:
-    void closeEvent(QCloseEvent *event)
-    {
-        Q_UNUSED(event);
-        qDebug() << "Sending note off...";
-        midi.sendNoteOff(0, QMidiNote::ASharp_5, 0);
-    }
-};
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -114,5 +88,3 @@ int main(int argc, char *argv[])
 
     a.exec();
 }
-
-#include "usage.moc"
