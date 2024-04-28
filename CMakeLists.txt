@@ -36,6 +36,7 @@ if(MSVC)
 endif()
 
 option(QMIDI_BUILD_TESTS "Build the unit tests"  OFF)
+option(QMIDI_BUILD_EXAMPLES "Build the examples"  OFF)
 
 #install var
 set(include_dest "include/QMidi-${QMidi_VERSION}")
@@ -59,6 +60,10 @@ add_subdirectory(src)
 if(${QMIDI_BUILD_TESTS})
     enable_testing()
     add_subdirectory(tests)
+endif()
+
+if(${QMIDI_BUILD_EXAMPLES})
+    add_subdirectory(examples)
 endif()
 
 # install

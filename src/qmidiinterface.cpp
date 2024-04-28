@@ -67,7 +67,10 @@ int QMidiInterface::index() const
 
 QMidiApi QMidiInterface::api() const
 {
-    return d_ptr->api;
+    if(!d_ptr)
+        return UnspecifiedApi;
+    else
+        return d_ptr->api;
 }
 
 QString QMidiInterface::name() const
